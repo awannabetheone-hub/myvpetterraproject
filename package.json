@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "three": "^0.186.1"
+  },
+  "name": "myvpetterraproject",
+  "version": "1.0.0",
+  "description": "my second project virtual pet",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awannabetheone-hub/myvpetterraproject.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/awannabetheone-hub/myvpetterraproject/issues"
+  },
+  "homepage": "https://github.com/awannabetheone-hub/myvpetterraproject#readme",
+  "devDependencies": {
+    "vite": "^8.3.5"
+  }
+}
