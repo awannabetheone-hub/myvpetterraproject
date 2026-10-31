@@ -3,7 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>myvpetterraproject</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
         <style>
         body {
             margin: 0;
@@ -13,6 +16,19 @@
             background: #ffddc3;
             font-family: pixelify, sans-serif;
         }
+         body >   h1 {
+                
+                font-size: 3rem;
+                position: relative;
+                top: 50px;
+                font-family: "chewy", cursive;
+            }
+            h2 {
+                font-size: 1.5rem;
+                position: relative;
+                top:-50px;
+            }
+        
 
         main{
 text-align: center;
@@ -23,6 +39,8 @@ text-align: center;
             width: min(500px, 85vw);
             cursor: pointer;
             transition: transform 0.3s ease;
+            position: relative;
+            top: -50px;
         }
 
         #tutup-box{
@@ -33,7 +51,34 @@ text-align: center;
             outline: 2px solid #b85c70;
             outline-offset : 8px;
         }
+
+        main h1 {
+            margin-top: 1px;
+        }
+
+        #world {
+            position: pixed;
+            inset:0;
+            background: #eee5d8;
+            overflow:hidden;
+        }
+
+        #world canvas{
+            display: block;
+        }
+
+        #world-label{
+            position: absolute;
+            top:20px;
+            left:20px;
+            z-index:2;
+            color:#80718c;
+            font-size: 14px;
+        }
         </style>
+        
+
+    
     </head>
     <body>
         <h1>Myvpetterraproject</h1>
@@ -47,19 +92,24 @@ text-align: center;
         alt="come inside"
         tabindex="0"
         role="button"
-        <h1>welcome to my virtual pet terra project</h1>
         >
+        <h2>welcome to my virtual pet terra project</h2>
+        
     </main>
+
+    <div id="world" style="display: none;">
+        <div id="world-label">where the fun start</div>
+    </div>
 
     <script>
         const toybox= document.querySelector("#box-tutup");
+        const popSound= new Audio("/asset/box/pop.mp3")
 
         toybox.addEventListener("click", () => {
-            toybox.style.transform = "scale(1.07)";
-            setTimeout(() =>{
-                toybox.style.transform ="";
-            
-            }, 300);
+            toybox.src = "asset/box/boxbuka.png";
+            toybox.alt="open toy box";
+            popSound.currentTime=0;
+            popSound.play();
         })
     </script>
     </body>
