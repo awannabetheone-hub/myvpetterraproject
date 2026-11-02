@@ -163,14 +163,6 @@ scene.children[scene.children.length -1].rotation.y=Math.PI;
 const popSound= new Audio ("./asset/box/pop.mp3");
 let isOpen=false; 
 box.addEventListener("click", async () => {
-if (!isOpen){
-    popSound.currentTime= 0;
-    popSound.play();
-    box.src= "/asset/box/boxbuka.png";
-    box.alt="open toy box";
-    isOpen=true;
-    return;
-}
 
 if (window.matchMedia("(max-width: 768px)").matches){
     try {
@@ -180,6 +172,17 @@ if (window.matchMedia("(max-width: 768px)").matches){
         //This browser or device may not support orientation locking.
     }
 }
+
+if (!isOpen){
+    popSound.currentTime= 0;
+    popSound.play();
+    box.src= "/asset/box/boxbuka.png";
+    box.alt="open toy box";
+    isOpen=true;
+    return;
+}
+
+
 
     world.style.display= "block";
     animate();
