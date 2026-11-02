@@ -16,7 +16,7 @@ const camera = new THREE.PerspectiveCamera(75,
     100
 );
 
-camera.position.set(0,1.5,1.4);
+camera.position.set(0,0.35,1.4);
 
 //Renderer
 const renderer= new THREE.WebGLRenderer({
@@ -66,11 +66,11 @@ renderer.domElement.addEventListener("pointermove", (event)=>{
     lastY= event.clientY;
 
     yaw-= deltaX * 0.004;
-    pitch = THREE.MathUtils.clamp(
-        pitch - deltaY *0.004,
-        -1.4,
-        1.4
-    );
+    
+        pitch -= deltaY * 0.004;
+        
+        
+    
     camera.rotation.set(pitch,yaw,0);
 });
 
@@ -162,7 +162,7 @@ scene.children[scene.children.length -1].rotation.y=Math.PI;
 //Enter the world
 const popSound= new Audio ("./asset/box/pop.mp3");
 let isOpen=false; 
-box.addEventListener("click",() => {
+box.addEventListener("click", async () => {
 if (!isOpen){
     popSound.currentTime= 0;
     popSound.play();
@@ -200,7 +200,7 @@ function animate()
 controls.moveForward((forward/inputLenght)*movementSpeed * delta);
 controls.moveRight((sideways/inputLenght)*movementSpeed * delta);
 camera.position.x= THREE.MathUtils.clamp(camera.position.x, -2.7,2.7);
-camera.position.y=1.5;
+camera.position.y=0.35;
 camera.position.z = THREE.MathUtils.clamp(camera.position.z, -1.5,1.5);
 
 
