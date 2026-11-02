@@ -29,9 +29,24 @@ text-align: center;
         #box-tutup {
             width: min(500px, 85vw);
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 1.3s ease-in, opacity 1.2s ease-in, filter 1.2s ease-in;        
             position: relative;
             top: -50px;
+        }
+
+        #box-tutup.sucked-in {
+            transform: scale(8) rotate(20deg);
+            opacity:0;
+            filter:blur(8px);
+        } 
+
+        #world{
+            opacity:0;
+            transition: opacity 1.2s ease-in;
+        }
+
+        #world.visible{
+            opacity:1;
         }
 
         #box-tutup{
