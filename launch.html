@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset ="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> come where everything begin</title>
+        <style>
+            html, body, iframe{
+                width: 100%;
+                height:100%;
+                margin:0;
+                border:0;
+
+            }
+            #app {
+                display: none;
+                position: fixed;
+                inset:0;
+            }
+
+            #start{
+                width: 100%;
+                height: 100%;
+                font: inherit;
+            }
+        </style>
+        </head>
+            <body>
+            <button id = "start">Enter</button>
+            <iframe id="app" src="/" title="mysecondproject"></iframe>
+
+            <script>
+                const startButton= document.querySelector("#start");
+                const app= document.querySelector("#app");
+
+                startButton.addEventListener("click", async ()=>{
+                    try{
+                        await document.documentElement.requestFullscreen();
+                        await screen.orientation.lock("landscape");
+                    
+                    } catch {
+                        //This browser or device may not support landscape locking
+                    }
+
+                    startButton.style.display="none";
+                    app.style.display= "block"
+
+                });
+            </script>
+            </body>
+        
+    
+</html>
