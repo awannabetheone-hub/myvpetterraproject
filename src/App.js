@@ -35,6 +35,22 @@ const movementKeys = new Set();
 const clock=new THREE.Clock();
 const movementSpeed=2;
 
+const floorY=0.35;
+const gravity=10;
+const jumpSpeed=2.5;
+let verticalVelocity=0;
+
+function jump(){
+    if(camera.position.y <= floorY + 0.01){
+        verticalVelocity= jumpSpeed;
+    }
+}
+
+document.querySelector("#jump-button").addEventListener("pointerdown", (event) =>{
+    event.preventDefault();
+    jump();
+})
+
 const joystickInput= {forward:0, sideways:0 };
 let joystick;
 
@@ -86,10 +102,18 @@ renderer.domElement.addEventListener("pointerup", stopDragging);
 renderer.domElement.addEventListener("pointercancel", stopDragging)
 
 window.addEventListener("keydown", (event)=>{
+   
+    if(event.code=== "Space"){
+        event.preventDefault();
+        jump();
+        return;
+    }
+   
     const key= event.key.toLowerCase();
     if (!["w","a","s","d"].includes(key)) return;
     event.preventDefault();
     movementKeys.add(key);
+     
 
 });
 
@@ -245,7 +269,13 @@ joystickInput.sideways
 controls.moveForward((forward/inputLenght)*movementSpeed * delta);
 controls.moveRight((sideways/inputLenght)*movementSpeed * delta);
 camera.position.x= THREE.MathUtils.clamp(camera.position.x, -2.7,2.7);
-camera.position.y=0.35;
+
+verticalVelocity-= gravity * delta;
+camera.position.y += verticalVelocity* delta;
+if(camera.position.y<= floorY){
+    camera.position.y=floorY;
+    verticalVelocity=0;
+}
 camera.position.z = THREE.MathUtils.clamp(camera.position.z, -1.5,1.5);
 
 

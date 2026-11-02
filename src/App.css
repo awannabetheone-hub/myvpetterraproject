@@ -95,4 +95,20 @@ text-align: center;
             touch-action: none;
 
         }
+
+        #jump-button{
+            position: absolute;
+            right:24px;
+            bottom:32px;
+            z-index:4 ;
+            width:76px;
+            height:76px;
+            border:0;
+            border-radius:50%;
+            background: #e6c889;
+            color:#382f27;
+            font:inherit;
+            font-weight:bold;
+            touch-action:none;
+        }
        
