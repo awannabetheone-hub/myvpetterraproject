@@ -172,6 +172,15 @@ if (!isOpen){
     return;
 }
 
+if (window.matchMedia("(max-width: 768px)").matches){
+    try {
+        await document.documentElement.requestFullscreen();
+        await screen.orientation.lock("landscape");
+    } catch {
+        //This browser or device may not support orientation locking.
+    }
+}
+
     world.style.display= "block";
     animate();
     
