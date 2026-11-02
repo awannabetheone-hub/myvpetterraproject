@@ -1,6 +1,7 @@
 import "./App.css";
 import * as THREE from 'three'; 
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
+import nipplejs from "nipplejs";
 
 const box= document.querySelector("#box-tutup");
 const world = document.querySelector("#world");
@@ -33,6 +34,9 @@ controls.pointerSpeed= 0.9;
 const movementKeys = new Set();
 const clock=new THREE.Clock();
 const movementSpeed=3;
+
+const joystickInput= {forward:0, sideways:0 };
+let joystick;
 
 let isDragging= false;
 let lastX= null;
@@ -182,7 +186,24 @@ if (!isOpen){
     return;
 }
 
+joystick = nipplejs.create({
+    zone: document.querySelector("#joystick"),
+    mode: "static",
+    position: { left: "50%", top: "50%" },
+    color: "#e6c889"
+});
 
+joystick.on("move", (event, data) => {
+    if (!data.vector) return;
+    const force = Math.min(data.force, 1);
+    joystickInput.sideways = data.vector.x * force;
+    joystickInput.forward = data.vector.y * force;
+});
+
+joystick.on("end", () => {
+    joystickInput.forward = 0;
+    joystickInput.sideways = 0;
+});
 
     world.style.display= "block";
     animate();
@@ -199,14 +220,24 @@ if (!isOpen){
 })
 
 //Render loop
+
+
 function animate()
 { requestAnimationFrame(animate);
     const delta = clock.getDelta();
 
 
+const forward =
+Number(movementKeys.has("w"))-
+Number(movementKeys.has("s"))+
+joystickInput.forward;
 
-    const forward = Number(movementKeys.has("w"))-Number(movementKeys.has("s"));
-    const sideways= Number(movementKeys.has("d"))-Number(movementKeys.has("a"));
+const sideways=
+Number(movementKeys.has("d"))-
+Number(movementKeys.has("a"))+
+joystickInput.sideways
+
+   
     const inputLenght= Math.hypot(forward,sideways) || 1;
 
 controls.moveForward((forward/inputLenght)*movementSpeed * delta);

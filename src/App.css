@@ -84,4 +84,15 @@ text-align: center;
 
             
         }
+
+        #joystick{
+            position: absolute;
+            left:20px;
+            bottom:20px;
+            width:140px;
+            height:140px;
+            z-index: 3;
+            touch-action: none;
+
+        }
        
