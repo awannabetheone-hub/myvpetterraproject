@@ -33,7 +33,7 @@ controls.pointerSpeed= 0.9;
 
 const movementKeys = new Set();
 const clock=new THREE.Clock();
-const movementSpeed=3;
+const movementSpeed=2;
 
 const joystickInput= {forward:0, sideways:0 };
 let joystick;
@@ -185,6 +185,7 @@ if (!isOpen){
     isOpen=true;
     return;
 }
+world.style.display= "block";
 
 joystick = nipplejs.create({
     zone: document.querySelector("#joystick"),
@@ -194,6 +195,7 @@ joystick = nipplejs.create({
 });
 
 joystick.on("move", (event, data) => {
+    console.log(data.vector, data.force); 
     if (!data.vector) return;
     const force = Math.min(data.force, 1);
     joystickInput.sideways = data.vector.x * force;
@@ -205,7 +207,7 @@ joystick.on("end", () => {
     joystickInput.sideways = 0;
 });
 
-    world.style.display= "block";
+    
     animate();
     
     requestAnimationFrame(()=>{
