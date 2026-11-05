@@ -87,8 +87,9 @@ text-align: center;
 
         #joystick{
             position: absolute;
-            left:20px;
-            bottom:20px;
+            left:40px;
+            bottom:50px;
+            opacity:1;
             width:140px;
             height:140px;
             z-index: 3;
@@ -98,14 +99,15 @@ text-align: center;
 
         #jump-button{
             position: absolute;
-            right:24px;
-            bottom:32px;
+            right:64px;
+            bottom:67px;
             z-index:4 ;
             width:76px;
             height:76px;
             border:0;
             border-radius:50%;
-            background: #e6c889;
+            background: #0c8f09;
+            opacity: 0.15;
             color:#382f27;
             font:inherit;
             font-weight:bold;

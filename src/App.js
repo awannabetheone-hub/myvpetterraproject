@@ -127,7 +127,7 @@ scene.add(ambientLight);
 
 const textureLoader = new THREE.TextureLoader();
 const floorTexture=textureLoader.load(
-    "/asset/the%20world/floor.png"
+    "/asset/the%20world/floor2.png"
 );
 floorTexture.colorSpace=THREE.SRGBColorSpace;
 
@@ -215,7 +215,7 @@ joystick = nipplejs.create({
     zone: document.querySelector("#joystick"),
     mode: "static",
     position: { left: "50%", top: "50%" },
-    color: "#e6c889"
+    color: "hsl(23, 92%, 76%)"
 });
 
 joystick.on("move", (event, data) => {
