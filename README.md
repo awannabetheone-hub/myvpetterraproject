@@ -1,6 +1,9 @@
 # MyVPetterra Project
 
-myvpetterraproject is a web-based project, the consept is a world in a toy box. where the user take care the toys as pet
+myvpetterraproject is a web-based project, the concept is a world in a toy box. where the user take care the toys as pet. thought the pet is still missing, i havent make the pet
+
+# Why did i make it
+i want to learn more about javascript and i really like to make this interactive world i like play pet game and i like cute thing like toys
 
 **Live demo:** [myvpetterraproject.vercel.app](https://myvpetterraproject.vercel.app)
 
@@ -8,7 +11,7 @@ myvpetterraproject is a web-based project, the consept is a world in a toy box. 
 
 - Click the closed box to open it and play a pop sound.
 - Click the open box to enter the 3D room.
-- Explore with W, A, S, D on desktop or the on-screen joystick on mobile.
+- Explore with W, A, S, D on desktop or the on-screen joystick on mobile
 - Look around by dragging in the scene; jump with Space or the on-screen jump button.
 - Room surfaces use image textures loaded from `public/asset/the world/`.
 
@@ -16,7 +19,8 @@ This is an early prototype focused on the entry interaction and room exploration
 
 ## Screenshot
 
-![MyVPetterra 3D room](docs/demo-screenshot.png)
+![MyVPetterra 3D room](docs/screenshot.png)
+[Watch gameplay](docs/game_play.mp4)
 
 ## Run Locally
 
