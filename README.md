@@ -54,15 +54,17 @@ On supported mobile browsers, entering the room also requests fullscreen and lan
 ## Project Structure
 
 ```text
-docs
+docs/
+    game_play.mp4/
+	screenshot.png/
 index.html
-src/
-	App.js
-	App.css
 public/
 	asset/
 		box/
 		the world/
+src/
+	App.js
+	App.css
 package.json
 README.md
 ```
