@@ -1,8 +1,8 @@
 # MyVPetterra Project
 
-myvpetterraproject is a web-based project, the concept is a world in a toy box. where the user take care the toys as pet. thought the pet is still missing, i havent make the pet
+myvpetterraproject is a web-based project, the concept is a world in a toy box. where user can take care the toys like pets. thought the pet is still missing, i havent make the pet yet.
 
-# Why did i make it
+# Why i make it
 i want to learn more about javascript and i really like to make this interactive world i like play pet game and i like cute thing like toys
 
 **Live demo:** [myvpetterraproject.vercel.app](https://myvpetterraproject.vercel.app)
@@ -54,6 +54,7 @@ On supported mobile browsers, entering the room also requests fullscreen and lan
 ## Project Structure
 
 ```text
+docs
 index.html
 src/
 	App.js
@@ -62,4 +63,6 @@ public/
 	asset/
 		box/
 		the world/
+package.json
+README.md
 ```
