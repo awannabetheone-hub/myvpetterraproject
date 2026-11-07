@@ -205,7 +205,7 @@ const musicbox = new THREE.Sprite(new THREE.SpriteMaterial({
 }));
 
 musicbox.scale.set(0.4,0.4,1);
-musicbox.position.set(0,0.2,-1.1);
+musicbox.position.set(0.5,0.2,0.8);
 scene.add(musicbox)
 
 const musicTracks=[
