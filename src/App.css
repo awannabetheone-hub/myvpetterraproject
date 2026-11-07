@@ -113,4 +113,11 @@ text-align: center;
             font-weight:bold;
             touch-action:none;
         }
+
+        #pet-care,
+        #world-label{
+    
+            display: none;
+        
+        }
        

@@ -6,6 +6,38 @@ import nipplejs from "nipplejs";
 const box= document.querySelector("#box-tutup");
 const world = document.querySelector("#world");
 
+const petStats={hunger:60, happiness:55, energy:90};
+const petMessage=document.querySelector("#pet-message");
+const petMeters={
+    hunger:document.querySelector("#pet-hunger"),
+    happiness:document.querySelector("#pet-happiness"),
+    energy:document.querySelector("#pet-energy")
+};
+
+function updatePetMeters(){
+    for(const[need,meter] of Object.entries(petMeters))
+        meter.value=petStats[need];
+
+}
+
+document.querySelectorAll("[data-care]").forEach((button) => {
+    button.addEventListener("click",()=>{
+        if(button.dataset.care==="feed") {
+            petStats.hunger=Math.max(0,petStats.hunger-40,);
+               petMessage.textContent="not bad";
+    }   else if(button.datadet.care === "play"){
+        petStats.happiness=Math.min(100,petStats.happiness+20);
+        petStats.energy=Math.max(0,petStats.energy-10);
+        petMessage.textContent="wonderful";
+    } else if(button.dataset.care=="rest"){
+        petStats.energy=Math.min(100,petStats.energy+15);
+        petMessage.textContent="perfect";
+    }
+    updatePetMeters();
+
+    });
+});
+
 // Create the 3D scene
 const scene = new THREE.Scene();
 scene.background= new THREE.Color("#ffffff");
@@ -148,6 +180,67 @@ const floor= new THREE.Mesh(
 floor.rotation.x= -Math.PI / 2;
 floor.position.y= 0 ;
 scene.add(floor);
+
+const dollTexture = textureLoader.load("/asset/the%20world/doll3.png");
+dollTexture.colorSpace=THREE.SRGBColorSpace;
+
+const doll = new THREE.Sprite(new THREE.SpriteMaterial ({
+    map: dollTexture,
+    transparent: true,
+    depthWrite: false
+}));
+
+doll.scale.set(1,0.5,0);
+doll.position.set(-2.84,0.2,1.5);
+scene.add(doll);
+
+const musicboxTexture=textureLoader.load("/asset/the%20world/music-box.png");
+musicboxTexture.colorSpace=THREE.SRGBColorSpace;
+
+const musicbox = new THREE.Sprite(new THREE.SpriteMaterial({
+    map:musicboxTexture,
+    transparent:true,
+    depthWrite:false
+    
+}));
+
+musicbox.scale.set(0.4,0.4,1);
+musicbox.position.set(0,0.2,-1.1);
+scene.add(musicbox)
+
+const musicTracks=[
+    "/asset/music/lili-dream.mp3",
+    "/asset/music/music1.mp3",
+    "/asset/music/music2.mp3"
+];
+
+const musicboxAudio = new Audio ();
+let currentTrackIndex=-1;
+
+const raycaster= new THREE.Raycaster();
+const pointer= new THREE.Vector2();
+
+renderer.domElement.addEventListener("click", async(event)=>{
+    const rect= renderer.domElement.getBoundingClientRect();
+
+    pointer.x=((event.clientX-rect.left)/rect.width) * 2-1;
+    pointer.y=-((event.clientY-rect.top)/rect.height) * 2+1;
+
+    raycaster.setFromCamera(pointer, camera);
+
+    if (raycaster.intersectObject(musicbox).length===0) return;
+
+    currentTrackIndex=(currentTrackIndex+1)% musicTracks.length;
+    musicboxAudio.src= musicTracks[currentTrackIndex];
+    musicboxAudio.currentTime=0;
+
+try{
+    await musicboxAudio.play();
+}catch(error){
+            console.error("Could not play music:", error);
+        }
+     
+});
 
 //Ceiling
 const ceiling= new THREE.Mesh(

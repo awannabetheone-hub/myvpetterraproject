@@ -31,8 +31,17 @@
 <div id="world">
         <div id="world-label">where the fun start</div>
         <div id="joystick"></div>
-        <div id="jump-button" type="button"></button>
+        <button id="jump-button" type="button" aria-label="jump"></button>
         
+            <section id="pet-care">
+                <p id="pet-message">lets play with me.</p>
+                <label>Hunger <progress id="pet-hunger" max="100" value="60"></progress></label>
+                <label>Happiness<progress id="pet-happiness" max="100" value="55"></progress></label>
+                <label>Energy<progress id="pet-energy" max="100" value="90"></progress></label>
+                <button type="button" data-care="feed">Feed</button>
+                <button type="button" data-care="play">play</button>
+                <button type="button" data-care="rest">Rest</button>
+            </section>
     </div>
 
    
