@@ -216,6 +216,8 @@ const musicTracks=[
 
 const musicboxAudio = new Audio ();
 let currentTrackIndex=-1;
+const musicboxBaseScale=0.4;
+let breathTime=0;
 
 const raycaster= new THREE.Raycaster();
 const pointer= new THREE.Vector2();
@@ -345,6 +347,17 @@ function animate()
 { requestAnimationFrame(animate);
     const delta = clock.getDelta();
 
+    if (!musicboxAudio.paused && !musicboxAudio.ended){
+        breathTime+=delta;
+        const pulse = 1+0.08 * Math.sin((breathTime * 2 * Math.PI)/ 3.2);
+        musicbox.scale.set(
+            musicboxBaseScale * pulse,
+            musicboxBaseScale * pulse,
+            1
+        );
+    } else {
+        musicbox.scale.set(musicboxBaseScale, musicboxBaseScale,1);
+    }
 
 const forward =
 Number(movementKeys.has("w"))-
